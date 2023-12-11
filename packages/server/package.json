@@ -11,5 +11,8 @@
   "license": "ISC",
   "dependencies": {
     "@trpc/server": "^10.44.1"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.3"
   }
 }

@@ -2,7 +2,9 @@
   "name": "trpc-react-starter",
   "version": "0.0.1",
   "description": "React starter with trpc",
-  "scripts": {},
+  "scripts": {
+    "start:client": "yarn workspace client dev"
+  },
   "private": true,
   "workspaces": [
     "packages/*"
