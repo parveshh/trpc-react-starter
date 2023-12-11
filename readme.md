@@ -1,3 +1,3 @@
-## TRPC + React.js starter
+## tRPC + React.js starter
 
-TRPC + React.js starter with Database migrations and JSON Schemas
+tRPC + React.js starter with Database migrations and JSON Schemas
