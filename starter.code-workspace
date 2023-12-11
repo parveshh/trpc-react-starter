@@ -1,0 +1,36 @@
+{
+    "folders": [
+        {
+            "name": "Server",
+            "path": "./packages/server"
+        },
+        {
+            "name": "Frontend Client",
+            "path": "./packages/client"
+        },
+        {
+            "name": "Schemas",
+            "path": "./packages/schemas"
+        },
+        {
+            "name": "Database Client",
+            "path": "./packages/dbclient"
+        },
+        {
+            "name": "Database Migrations",
+            "path": "./packages/dbmigrations"
+        },
+        {
+            "name": "Root",
+            "path": "./"
+        
+        }
+
+    ],
+    "settings": {
+        "workbench.colorTheme": "Default Dark+",
+        "editor.formatOnSave": true,
+        "editor.formatOnPaste": true,
+        "editor.formatOnType": true,
+    }
+}
