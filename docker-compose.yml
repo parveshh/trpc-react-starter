@@ -1,0 +1,9 @@
+version: '3.8'
+services:
+  db:
+  image: postgres,
+  environment:
+    POSTGRES_USER: starterapp
+    POSTGRES_PASSWORD: starterapp
+    POSTGRES_DB: starterapp
+  ports: 5431:5432

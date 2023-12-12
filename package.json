@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "description": "React starter with trpc",
   "scripts": {
-    "start:client": "yarn workspace client dev"
+    "start:client": "yarn workspace client dev",
+    "build:schemas": "yarn workspace @app/schemas build"
   },
   "private": true,
   "workspaces": [
