@@ -5,7 +5,9 @@
   "scripts": {
     "start:client": "yarn workspace client dev",
     "build:schemas": "yarn workspace @app/schemas build",
-    "db:up": "docker-compose up -d db"
+    "db:up": "docker-compose up -d db",
+    "migrate": "yarn workspace dbmigrations run migrate",
+    "create:migration": "yarn workspace dbmigrations run create"
   },
   "private": true,
   "workspaces": [

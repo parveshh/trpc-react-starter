@@ -1,7 +1,6 @@
 import "ts-node/register";
 import type { Knex } from "knex";
 import config from "./src/config";
-
 const migrations = {
   tableName: "knex_migrations",
   directory: "src/migrations",
@@ -18,7 +17,7 @@ const configuration: { [key: string]: Knex.Config } = {
       password: config.DB_PASSWORD,
     },
     seeds: {
-      directory: "src/seeds",
+      directory: "./src/seeds",
     },
     migrations,
   },
