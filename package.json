@@ -4,7 +4,8 @@
   "description": "React starter with trpc",
   "scripts": {
     "start:client": "yarn workspace client dev",
-    "build:schemas": "yarn workspace @app/schemas build"
+    "build:schemas": "yarn workspace @app/schemas build",
+    "db:up": "docker-compose up -d db"
   },
   "private": true,
   "workspaces": [
