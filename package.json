@@ -7,7 +7,9 @@
     "build:schemas": "yarn workspace @app/schemas build",
     "db:up": "docker-compose up -d db",
     "migrate": "yarn workspace dbmigrations run migrate",
-    "create:migration": "yarn workspace dbmigrations run create"
+    "create:migration": "yarn workspace dbmigrations run create",
+    "db:down": "docker-compose down",
+    "dbclient:test": "yarn workspace dbclient test"
   },
   "private": true,
   "workspaces": [
