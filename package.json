@@ -9,7 +9,8 @@
     "migrate": "yarn workspace dbmigrations run migrate",
     "create:migration": "yarn workspace dbmigrations run create",
     "db:down": "docker-compose down",
-    "dbclient:test": "yarn workspace dbclient test"
+    "dbclient:test": "yarn workspace @app/dbclient test",
+    "dbclient:build": "yarn workspace @app/dbclient build"
   },
   "private": true,
   "workspaces": [

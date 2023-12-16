@@ -22,6 +22,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@app/dbclient@workspace:packages/dbclient":
+  version: 0.0.0-use.local
+  resolution: "@app/dbclient@workspace:packages/dbclient"
+  dependencies:
+    "@app/schemas": "npm:1.0.0"
+    "@babel/core": "npm:^7.23.6"
+    "@babel/preset-env": "npm:^7.23.6"
+    "@babel/preset-typescript": "npm:^7.23.3"
+    babel-jest: "npm:^29.7.0"
+    jest: "npm:^29.7.0"
+    pino: "npm:^8.17.1"
+    postgres: "npm:^3.4.3"
+    typescript: "npm:^5.3.3"
+  languageName: unknown
+  linkType: soft
+
 "@app/schemas@npm:1.0.0, @app/schemas@npm:^1.0.0, @app/schemas@workspace:packages/schemas":
   version: 0.0.0-use.local
   resolution: "@app/schemas@workspace:packages/schemas"
@@ -3341,22 +3357,6 @@ __metadata:
   checksum: 80c089d6f7e0c5b2bd83cf0539ab41474198579584fa10d86d0cafe0642202343cbc119e076a0b1aece191989477081415d66c9fefbf3c957fc2fc4b7009f248
   languageName: node
   linkType: hard
-
-"dbclient@workspace:packages/dbclient":
-  version: 0.0.0-use.local
-  resolution: "dbclient@workspace:packages/dbclient"
-  dependencies:
-    "@app/schemas": "npm:1.0.0"
-    "@babel/core": "npm:^7.23.6"
-    "@babel/preset-env": "npm:^7.23.6"
-    "@babel/preset-typescript": "npm:^7.23.3"
-    babel-jest: "npm:^29.7.0"
-    jest: "npm:^29.7.0"
-    pino: "npm:^8.17.1"
-    postgres: "npm:^3.4.3"
-    typescript: "npm:^5.3.3"
-  languageName: unknown
-  linkType: soft
 
 "dbmigrations@workspace:packages/dbmigrations":
   version: 0.0.0-use.local
