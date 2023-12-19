@@ -1,9 +1,9 @@
 function mockPostgres() {
   return [];
 }
-
 mockPostgres.json = jest.fn();
 jest.mock("postgres", () => () => jest.fn(mockPostgres));
+
 import { UserRepository } from "../repositories/userRepository";
 import sql from "postgres";
 import { User } from "@app/schemas";

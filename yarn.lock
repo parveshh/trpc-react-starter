@@ -22,7 +22,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@app/dbclient@workspace:packages/dbclient":
+"@app/dbclient@npm:^1.0.0, @app/dbclient@workspace:packages/dbclient":
   version: 0.0.0-use.local
   resolution: "@app/dbclient@workspace:packages/dbclient"
   dependencies:
@@ -6295,6 +6295,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "server@workspace:packages/server"
   dependencies:
+    "@app/dbclient": "npm:^1.0.0"
     "@app/schemas": "npm:^1.0.0"
     "@trpc/server": "npm:^10.44.1"
     env-schema: "npm:^5.2.1"
