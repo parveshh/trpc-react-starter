@@ -12,7 +12,9 @@
     "dbclient:test": "yarn workspace @app/dbclient test",
     "dbclient:build": "yarn workspace @app/dbclient build",
     "server:test": "yarn workspace server test",
-    "client:test": "yarn workspace client test"
+    "client:test": "yarn workspace client test",
+    "server:build": "yarn workspace server build",
+    "server:start": "yarn workspace server start"
   },
   "private": true,
   "workspaces": [

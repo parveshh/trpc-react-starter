@@ -6,7 +6,7 @@ jest.mock("postgres", () => () => jest.fn(mockPostgres));
 
 import { UserRepository } from "../repositories/userRepository";
 import sql from "postgres";
-import { User } from "@app/schemas";
+import { UserSchemaType } from "@app/schemas";
 
 describe("UserRepository", () => {
   let userRepository: UserRepository;
@@ -32,7 +32,7 @@ describe("UserRepository", () => {
   });
 
   it("should create user", async () => {
-    const userInput: User = {
+    const userInput: UserSchemaType = {
       email: "test@test.com",
       password: "test",
       details: {

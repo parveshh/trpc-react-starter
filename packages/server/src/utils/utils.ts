@@ -2,7 +2,7 @@ import * as jwt from "jose";
 import { TokenPayload } from "src/types";
 import fs from "fs/promises";
 import path from "path";
-
+import crypto from "crypto";
 let authTokenKeys: { publicKey: Buffer; privateKey: Buffer } | null = null;
 let refreshTokenKeys: { publicKey: Buffer; privateKey: Buffer } | null = null;
 
@@ -92,9 +92,16 @@ const getKeys = async () => {
   return { authTokenKeys, refreshTokenKeys };
 };
 
+const createSHAHash = (data: string): string => {
+  const hash = crypto.createHash("sha256");
+  hash.update(data);
+  return hash.digest("hex");
+};
+
 export {
   generateAuthToken,
   verifyAuthToken,
   generateRefreshToken,
   verifyRefreshToken,
+  createSHAHash,
 };

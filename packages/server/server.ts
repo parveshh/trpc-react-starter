@@ -1,9 +1,24 @@
 import { fastifyTRPCPlugin } from "@trpc/server/adapters/fastify";
-import { t } from "./src/trpc";
 import fastify from "fastify";
-import { router } from "./src/trpc";
+
 import config from "./src/config";
+import { appRouter } from "./src/routes";
+import { createContext } from "./src/context";
 
-const app = fastify();
+const server = fastify();
 
+server.register(fastifyTRPCPlugin, {
+  prefix: "/trpc",
+  logger: true,
+  trpcOptions: { router: appRouter, createContext, loglevel: "debug" },
+});
 
+(async () => {
+  try {
+    await server.listen({ port: config.PORT, host: "0.0.0.0" });
+    console.log("running back end on port", config.PORT);
+  } catch (err) {
+    server.log.error(err);
+    process.exit(1);
+  }
+})();
