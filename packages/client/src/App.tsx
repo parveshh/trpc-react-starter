@@ -1,4 +1,4 @@
-import { Card } from './components/cards';
+import { Card } from './components/card';
 import { Header } from './components/header';
 import { Main } from './components/main';
 import { Cdk } from './icons/cdk';

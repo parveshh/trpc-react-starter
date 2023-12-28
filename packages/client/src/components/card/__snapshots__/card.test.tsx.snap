@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card Tests should render 1`] = `
+<Card
+  icon={<div />}
+  title="test"
+>
+  test
+</Card>
+`;

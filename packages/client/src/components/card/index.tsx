@@ -1,3 +1,5 @@
+import React from 'react';
+
 export function Card({
   children,
   title,
@@ -13,13 +15,13 @@ export function Card({
         border-t-4 border-cyan-600 flex flex-col
     rounded-lg overflow-hidden max-w-md p-10 w-[400px]'
     >
-      <h2 id='title' className='text-cyan-600 font'>
+      <h2 role='heading' id='title' className='text-cyan-600 font'>
         {title}
       </h2>
-      <div id='body' className='p-0 text-gray-700'>
+      <div role='contentinfo' id='body' className='p-0 text-gray-700'>
         {children}
       </div>
-      <div id='icon' className='w-fit justify-end pt-5 ml-auto'>
+      <div role='img' id='icon' className='w-fit justify-end pt-5 ml-auto'>
         {icon}
       </div>
     </div>

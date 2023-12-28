@@ -11,7 +11,8 @@
     "db:down": "docker-compose down",
     "dbclient:test": "yarn workspace @app/dbclient test",
     "dbclient:build": "yarn workspace @app/dbclient build",
-    "server:test": "yarn workspace server test"
+    "server:test": "yarn workspace server test",
+    "client:test": "yarn workspace client test"
   },
   "private": true,
   "workspaces": [

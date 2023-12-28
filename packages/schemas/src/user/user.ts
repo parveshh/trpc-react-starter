@@ -18,5 +18,5 @@ export const UserDbSchema = Type.Intersect([
   }),
 ]);
 
-export type User = Static<typeof UserSchema>;
-export type UserDb = Static<typeof UserDbSchema>;
+export type UserSchemaType = Static<typeof UserSchema>;
+export type UserDbSchemaType = Static<typeof UserDbSchema>;
