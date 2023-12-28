@@ -21,7 +21,9 @@ describe("UserRepository", () => {
       username: "test",
       password: "test",
     });
-    sqlMock.json = jest.fn();
+    sqlMock.json = jest
+      .fn()
+      .mockImplementation((value) => JSON.stringify(value));
     userRepository = new UserRepository(sqlMock);
   });
 
@@ -39,7 +41,17 @@ describe("UserRepository", () => {
       },
     };
     await userRepository.createUser(userInput);
-    expect(sqlMock).toHaveBeenCalled();
+    expect(sqlMock).toHaveBeenCalledWith(
+      [
+        "INSERT INTO users (email, password, details) VALUES (",
+        ", ",
+        ", ",
+        ") RETURNING *",
+      ],
+      "test@test.com",
+      "test",
+      JSON.stringify(userInput.details)
+    );
     expect(sqlMock.json).toHaveBeenCalledWith(userInput.details);
   });
 });
