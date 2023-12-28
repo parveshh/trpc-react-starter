@@ -27,7 +27,16 @@ export class UserRepository {
     this.logger.debug("Getting user");
     const [result] = await this.sql<
       [User]
-    >`SELECT user_id, email, password, details FROM users WHERE email = ${email}`;
+    >`SELECT id, email, password, details FROM users WHERE email = ${email}`;
+
+    return result;
+  }
+
+  async getUserById(userId: string) {
+    this.logger.debug("Getting user by id", { userId });
+    const [result] = await this.sql<
+      [Omit<UserDb, "password">]
+    >`SELECT id, email, details FROM users WHERE id = ${userId}`;
 
     return result;
   }
@@ -36,6 +45,6 @@ export class UserRepository {
     this.logger.debug("Marking user as verified", { userId });
     await this.sql<
       [UserDb]
-    >`UPDATE users SET is_active = true WHERE user_id = ${userId}`;
+    >`UPDATE users SET is_active = true WHERE id = ${userId}`;
   }
 }
