@@ -1,5 +1,8 @@
-import { SigninSchema } from "@app/schemas";
+import { Compile, SigninSchema } from "@app/schemas";
 import { publicProcedure } from "../procedures/publicProcedure";
-import { router } from "../trpc";
 
-export const signinRouter = publicProcedure.input(SigninSchema).query(() => {});
+export const signin = publicProcedure
+  .input(Compile(SigninSchema))
+  .query(({ input, ctx }) => {
+    const { email, password } = input;
+  });

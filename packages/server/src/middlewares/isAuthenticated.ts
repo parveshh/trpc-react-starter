@@ -1,6 +1,6 @@
 import { t } from "../trpc";
 import { UnAuthorizedError } from "../errors/";
-import { verifyAuthToken } from "../utils/tokenUtils";
+import { verifyAuthToken } from "../utils/utils";
 
 export const isAuthenticated = t.middleware(async (request) => {
   const { userRepository, req } = request.ctx;

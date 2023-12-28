@@ -1,3 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`ForbiddenError should have message 1`] = `"Some Error"`;

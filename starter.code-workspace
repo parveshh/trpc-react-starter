@@ -21,6 +21,10 @@
       "path": "./packages/dbmigrations"
     },
     {
+      "name": "Infrastructure",
+      "path": "./packages/infracdk"
+    },
+    {
       "name": "Root",
       "path": "./"
     }

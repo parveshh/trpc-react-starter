@@ -1,4 +1,4 @@
-import { User, UserDb } from "@app/schemas";
+import { UserSchemaType, UserDbSchemaType } from "@app/schemas";
 import sql, { Sql } from "postgres";
 import { LoggerOf } from "../utils";
 import pino from "pino";
@@ -12,10 +12,10 @@ export class UserRepository {
     this.logger.debug("UserRepository created");
   }
 
-  async createUser(userInput: User) {
+  async createUser(userInput: UserSchemaType) {
     this.logger.debug("Creating user");
     const [result] = await this.sql<
-      [UserDb]
+      [UserDbSchemaType]
     >`INSERT INTO users (email, password, details) VALUES (${
       userInput.email
     }, ${userInput.password}, ${this.sql.json(userInput.details)}) RETURNING *`;
@@ -26,7 +26,7 @@ export class UserRepository {
   async getUser(email: string) {
     this.logger.debug("Getting user");
     const [result] = await this.sql<
-      [User]
+      [UserSchemaType]
     >`SELECT id, email, password, details FROM users WHERE email = ${email}`;
 
     return result;
@@ -35,7 +35,7 @@ export class UserRepository {
   async getUserById(userId: string) {
     this.logger.debug("Getting user by id", { userId });
     const [result] = await this.sql<
-      [Omit<UserDb, "password">]
+      [Omit<UserDbSchemaType, "password">]
     >`SELECT id, email, details FROM users WHERE id = ${userId}`;
 
     return result;
@@ -44,7 +44,7 @@ export class UserRepository {
   async markUserAsVerified(userId: string) {
     this.logger.debug("Marking user as verified", { userId });
     await this.sql<
-      [UserDb]
+      [UserDbSchemaType]
     >`UPDATE users SET is_active = true WHERE id = ${userId}`;
   }
 }
