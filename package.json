@@ -4,7 +4,7 @@
   "description": "React starter with trpc",
   "scripts": {
     "start:client": "yarn workspace client dev",
-    "build:schemas": "yarn workspace @app/schemas build",
+    "schemas:build": "yarn workspace @app/schemas build",
     "db:up": "docker-compose up -d db",
     "migrate": "yarn workspace dbmigrations run migrate",
     "create:migration": "yarn workspace dbmigrations run create",
@@ -14,7 +14,7 @@
     "server:test": "yarn workspace server test",
     "client:test": "yarn workspace client test",
     "server:build": "yarn workspace server build",
-    "server:start": "yarn workspace server start"
+    "start:server": "yarn workspace server start"
   },
   "private": true,
   "workspaces": [
