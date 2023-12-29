@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest --watch",
     "start": "yarn build &&  node .",
-    "build": "tsc -p tsconfig.json && cp .env dist/"
+    "build": "tsc -p tsconfig.json && cp .env dist/.env"
   },
   "keywords": [],
   "author": "",
