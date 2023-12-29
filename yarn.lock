@@ -37,6 +37,7 @@ __metadata:
     "@babel/core": "npm:^7.23.6"
     "@babel/preset-env": "npm:^7.23.6"
     "@babel/preset-typescript": "npm:^7.23.3"
+    "@types/jest": "npm:^29.5.11"
     babel-jest: "npm:^29.7.0"
     jest: "npm:^29.7.0"
     pino: "npm:^8.17.1"
@@ -2599,7 +2600,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/jest@npm:^29.5.8":
+"@types/jest@npm:^29.5.11, @types/jest@npm:^29.5.8":
   version: 29.5.11
   resolution: "@types/jest@npm:29.5.11"
   dependencies:
