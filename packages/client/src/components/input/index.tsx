@@ -1,22 +1,38 @@
-import { FieldErrors, FieldValues, UseFormRegister } from 'react-hook-form';
+import React, { useEffect, useState } from 'react';
+import {
+  FieldErrors,
+  FieldValues,
+  Path,
+  UseFormRegister,
+} from 'react-hook-form';
 
-interface InputProps {
-  elementHook: UseFormRegister<FieldValues>;
-  fieldName: string;
-  errors: FieldErrors<FieldValues>;
+interface InputProps<T extends FieldValues> {
+  elementHook: UseFormRegister<T>;
+  fieldName: Path<T>;
+  error?: string;
+  type?: React.InputHTMLAttributes<HTMLInputElement>['type'];
+  placeholder?: string;
+  className?: string;
 }
-export function Input({ elementHook, fieldName, errors }: InputProps) {
+export function Input<T extends FieldValues>({
+  elementHook,
+  fieldName,
+  placeholder,
+  error,
+  className,
+  type = 'text',
+}: InputProps<T>) {
   return (
     <>
-      <input
-        {...elementHook(fieldName)}
-        className='border-2 border-gray-200 rounded-lg p-2'
-      />
-      {errors[fieldName] && (
-        <p className='text-red-500 text-sm'>
-          {errors[fieldName] && errors[fieldName]?.message?.toString()}
-        </p>
-      )}
+      <div className='flex w-full flex-col mb-2'>
+        <input
+          type={type}
+          placeholder={placeholder}
+          {...elementHook(fieldName)}
+          className={className}
+        />
+        {error && <p className='text-red-500 text-sm'>{error}</p>}
+      </div>
     </>
   );
 }
