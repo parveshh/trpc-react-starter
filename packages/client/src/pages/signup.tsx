@@ -5,14 +5,57 @@ import { Layout } from '../layout/layout';
 import { Input } from '../components/input';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { SignUpSchema } from '../schemas/signup';
+import { SignUpSchemaType } from '@app/schemas';
+import { trpc } from '../server/trpc';
+import { useState } from 'react';
+import { Alert } from '../components/alert';
 
 export function SignUp() {
+  const [success, setSuccess] = useState<{
+    state: 'pending' | 'success' | 'error';
+    message: string;
+  }>({
+    state: 'pending',
+    message: '',
+  });
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm({ resolver: yupResolver(SignUpSchema) });
-  const onSubmit = (data: any) => console.log(data);
+
+  const mutation = trpc.signUp.useMutation();
+
+  const onSubmit = (data: SignUpSchemaType) => {
+    mutation.mutate(
+      {
+        email: data.email,
+        password: data.password,
+        details: {
+          firstName: data.firstName,
+          lastName: data.lastName,
+        },
+      },
+      {
+        onSuccess: () => {
+          reset();
+          setSuccess((prev) => ({
+            ...prev,
+            state: 'success',
+            message: 'Account created successfully',
+          }));
+        },
+        onError: (err) => {
+          setSuccess((prev) => ({
+            ...prev,
+            state: 'error',
+            message: err.message,
+          }));
+        },
+      }
+    );
+  };
   return (
     <Layout>
       <div className='flex flex-row rounded-md shadow-lg w-[80%] shadow-gray-300/2 border'>
@@ -74,6 +117,12 @@ export function SignUp() {
             >
               Login
             </button>
+            {success.state === 'success' && (
+              <Alert variant='success' message={success.message} />
+            )}
+            {success.state === 'error' && (
+              <Alert variant='error' message={success.message} />
+            )}
           </form>
         </div>
         <SideInfo

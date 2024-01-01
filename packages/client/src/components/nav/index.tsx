@@ -22,7 +22,7 @@ export const Nav = () => {
           <a className='text-gray-600 text-sm' href='/sign-in'>
             Login
           </a>
-          <a className='text-gray-600 text-sm' href='https://trpc.io'>
+          <a className='text-gray-600 text-sm' href='/signup'>
             Signup
           </a>
         </nav>
