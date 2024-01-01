@@ -16,7 +16,7 @@ export function SignUp() {
   return (
     <Layout>
       <div className='flex flex-row rounded-md shadow-lg w-[80%] shadow-gray-300/2 border'>
-        <div className='flex flex-col items-start w-[60%] p-5'>
+        <div className='flex flex-col items-start sm:w-[60%] w-full p-5'>
           <Title variant='primary'>Create new account</Title>
           <form
             onSubmit={handleSubmit(onSubmit)}

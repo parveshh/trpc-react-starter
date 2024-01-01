@@ -2,7 +2,7 @@ import { Title } from '../title';
 
 export function SignIn() {
   return (
-    <div className='flex flex-col items-start w-[60%] p-5'>
+    <div className='flex flex-col items-start sm:w-[60%] w-full p-5'>
       <Title variant='primary'>Login to your account</Title>
       <form className='flex flex-col mt-10 justify-start w-full items-center'>
         <input

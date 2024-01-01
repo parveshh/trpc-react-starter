@@ -39,6 +39,12 @@ Build the application with `yarn build`.
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
+## Screens
+
+![Home](./assets/home.png)
+![Login](./assets/login.png)
+![Sign Up](./assets/signup.png)
+
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
