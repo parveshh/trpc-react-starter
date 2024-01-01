@@ -1,8 +1,8 @@
-import { Compile, SigninSchema } from "@app/schemas";
+import { SigninSchema } from "@app/schemas";
 import { publicProcedure } from "../procedures/publicProcedure";
 
 export const signin = publicProcedure
-  .input(Compile(SigninSchema))
+  .input(SigninSchema)
   .query(({ input, ctx }) => {
     const { email, password } = input;
   });

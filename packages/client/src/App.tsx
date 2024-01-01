@@ -6,6 +6,32 @@ import { ReactIcon } from './icons/react';
 import { TRPCIcon } from './icons/trpc';
 import './index.css';
 import { Layout } from './layout/layout';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { SignInPage } from './pages/signin.tsx';
+import { SignUp } from './pages/signup.tsx';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { httpBatchLink } from '@trpc/client';
+import { useState } from 'react';
+import { trpc } from './server/trpc.ts';
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <App />,
+  },
+  {
+    path: '/sign-in',
+    element: <SignInPage />,
+  },
+  {
+    path: '/signup',
+    element: <SignUp />,
+  },
+  {
+    path: '*',
+    element: <div>404</div>,
+  },
+]);
 
 function App() {
   return (
@@ -57,4 +83,25 @@ function App() {
   );
 }
 
-export default App;
+export function Root() {
+  const [queryClient] = useState(() => new QueryClient());
+  const [trpcClient] = useState(() =>
+    trpc.createClient({
+      links: [
+        httpBatchLink({
+          url: 'http://localhost:3000/trpc',
+          // You can pass any HTTP headers you wish here
+        }),
+      ],
+    })
+  );
+  return (
+    <trpc.Provider client={trpcClient} queryClient={queryClient}>
+      <QueryClientProvider client={queryClient}>
+        <RouterProvider router={router} />
+      </QueryClientProvider>
+    </trpc.Provider>
+  );
+}
+
+export default Root;

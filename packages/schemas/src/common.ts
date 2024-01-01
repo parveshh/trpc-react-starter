@@ -1,9 +1,13 @@
-import { Type } from "@sinclair/typebox";
+import * as yup from "yup";
 
-export const DBSchema = Type.Object({
-  created_at: Type.String({ format: "date-time" }),
-  updated_at: Type.String({ format: "date-time" }),
-  is_active: Type.Boolean(),
+export const DBSchema = yup.object().shape({
+  created_at: yup.date().required(),
+  updated_at: yup.date().required(),
+  is_active: yup.boolean().required(),
 });
 
-export const DBSchemaOptional = Type.Optional(DBSchema);
+export const DBSchemaOptional = yup.object().shape({
+  created_at: yup.date(),
+  updated_at: yup.date(),
+  is_active: yup.boolean(),
+});
