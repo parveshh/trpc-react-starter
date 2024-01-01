@@ -1,44 +1,75 @@
+import { useForm } from 'react-hook-form';
 import { SideInfo } from '../components/sideInfo';
 import { Title } from '../components/title';
 import { Layout } from '../layout/layout';
+import { Input } from '../components/input';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { SignUpSchema } from '../schemas/signup';
 
 export function SignUp() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({ resolver: yupResolver(SignUpSchema) });
+  const onSubmit = (data: any) => console.log(data);
   return (
     <Layout>
       <div className='flex flex-row rounded-md shadow-lg w-[80%] shadow-gray-300/2 border'>
         <div className='flex flex-col items-start w-[60%] p-5'>
           <Title variant='primary'>Create new account</Title>
-          <form className='flex flex-col mt-10 justify-start w-full items-center'>
-            <div className='flex flex-row  gap-3 mb-2'>
-              <input
-                className='border border-gray-300 p-2  w-full rounded-md'
-                type='text'
-                placeholder='First Name'
-              />
-              <input
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className='flex flex-col mt-10 justify-start w-full items-center'
+          >
+            <div className='flex md:flex-row flex-col w-full md:gap-2'>
+              <Input
                 className='border border-gray-300 p-2 w-full rounded-md'
-                type='text'
-                placeholder='Last Name'
+                elementHook={register}
+                fieldName='firstName'
+                placeholder='Firstname'
+                error={errors?.firstName?.message}
+              />
+              <Input
+                className='border border-gray-300 p-2 w-full rounded-md'
+                elementHook={register}
+                fieldName='lastName'
+                placeholder='Lastname'
+                error={errors?.lastName?.message}
               />
             </div>
-            <input
-              className='border border-gray-300 p-2 m-2 w-full rounded-md'
-              type='text'
+
+            <Input
+              className='border border-gray-300 p-2  w-full rounded-md'
+              elementHook={register}
+              fieldName='email'
               placeholder='Email'
+              error={errors?.email?.message}
             />
-            <input
-              className='border border-gray-300 p-2 m-2 w-full rounded-md'
+            <Input
+              fieldName='password'
+              elementHook={register}
+              error={errors?.password?.message}
+              className='border border-gray-300 p-2  w-full rounded-md'
               type='password'
-              placeholder='Confirm Email'
+              placeholder='Password'
             />
-            <input
-              className='border border-gray-300 p-2 m-2 w-full rounded-md'
+            <Input
+              className='border border-gray-300 p-2  w-full rounded-md'
               type='password'
+              elementHook={register}
+              fieldName='confirmPassword'
+              error={errors?.confirmPassword?.message}
               placeholder='Confirm Password'
             />
 
             <button
-              className='border border-gray-300 p-2 m-2 w-full rounded-md  bg-cyan-600 text-white'
+              className='border border-gray-300 
+              hover:bg-cyan-500
+              hover:rounded-lg
+              trasition all duration-500 ease-in-out
+              p-2 m-2 w-full rounded-md
+                bg-cyan-600 text-white'
               type='submit'
             >
               Login
@@ -53,7 +84,7 @@ export function SignUp() {
               Voluptates, quibusdam.
             </p>
           }
-          href='/signin'
+          href='/sign-in'
           hrefText='Sign In'
         ></SideInfo>
       </div>
