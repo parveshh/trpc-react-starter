@@ -9,7 +9,7 @@ interface SignInProps {
 
 export function SideInfo({ summary, href, hrefText, title }: SignInProps) {
   return (
-    <div className='flex flex-col gap-2 place-content-center w-[40%] bg-cyan-600/10 p-10'>
+    <div className='sm:flex flex-col gap-2 place-content-center sm:w-[40%] w-0 hidden bg-cyan-600/10 p-10 transition-all duration-500'>
       <Title variant='secondary'>{title}</Title>
       {summary}
       <a
