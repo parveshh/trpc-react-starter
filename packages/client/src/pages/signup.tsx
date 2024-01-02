@@ -128,9 +128,8 @@ export function SignUp() {
         <SideInfo
           title='Already have an account?'
           summary={
-            <p className='text-gray-500 text-center text-sm'>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Voluptates, quibusdam.
+            <p className='text-gray-100 text-center text-sm'>
+              Already have an account? Login to your account to continue
             </p>
           }
           href='/sign-in'

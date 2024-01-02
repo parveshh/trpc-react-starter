@@ -10,12 +10,22 @@ interface SignInProps {
 
 export function SideInfo({ summary, href, hrefText, title }: SignInProps) {
   return (
-    <div className='sm:flex flex-col gap-2 place-content-center sm:w-[40%] w-0 hidden bg-cyan-600/10 p-10 transition-all duration-500'>
-      <Title variant='secondary'>{title}</Title>
+    <div
+      className='sm:flex
+    flex-col gap-4
+    hover:brightness-110
+    justify-center items-center
+    rounded-md
+    bg-[url("./assets/stack.svg")]
+    sm:w-[40%] w-0 hidden p-10 transition-all duration-500'
+    >
+      <Title variant='secondary' color='text-white'>
+        {title}
+      </Title>
       {summary}
       <Link
         to={href}
-        className='border border-gray-300 p-2 m-2 w-full text-center rounded-md bg-cyan-600 text-white'
+        className='border border-gray-300 p-2 m-2 w-full text-center rounded-md  text-white'
       >
         {hrefText}
       </Link>

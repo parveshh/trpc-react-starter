@@ -1,4 +1,3 @@
-import { Static, Type } from "@sinclair/typebox";
 import { DBSchema } from "../common";
 import * as yup from "yup";
 
@@ -11,11 +10,23 @@ export const UserSchema = yup.object().shape({
   }),
 });
 
-export const UserDbSchema = yup.object().shape({
-  ...UserSchema.fields,
-  ...DBSchema.fields,
-  id: yup.string().required("ID is required").uuid("ID must be a valid UUID"),
-});
+export const UserDbSchema = yup
+  .object()
+  .concat(DBSchema)
+  .concat(UserSchema)
+  .concat(
+    yup.object().shape({
+      id: yup
+        .string()
+        .required("ID is required")
+        .uuid("ID must be a valid UUID"),
+    })
+  );
+// export const UserDbSchema = yup.object().shape({
+//   ...UserSchema.fields,
+//   ...DBSchema.fields,
+//   id: yup.string().required("ID is required").uuid("ID must be a valid UUID"),
+// });
 
 export const SignUpSchema = yup.object().shape({
   firstName: yup.string().required("First name is required"),

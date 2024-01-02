@@ -32,6 +32,25 @@ export class UserRepository {
     return result;
   }
 
+  async signIn(email: string, password: string) {
+    this.logger.debug("Signing in user");
+    const [result] = await this.sql<
+      [UserDbSchemaType]
+    >`SELECT id, email, details FROM users WHERE email = ${email} AND password = ${password}`;
+    this.logger.debug("User signed in");
+    return result;
+  }
+
+  async updateRefreshToken(userId: string, refreshToken: string) {
+    this.logger.debug("Updating refresh token");
+    await this.sql<
+      [UserDbSchemaType]
+    >`UPDATE users SET details = details || ${this.sql.json({
+      refreshToken,
+    })} WHERE id = ${userId}`;
+    this.logger.debug("Refresh token updated");
+  }
+
   async getUserById(userId: string) {
     this.logger.debug("Getting user by id", { userId });
     const [result] = await this.sql<

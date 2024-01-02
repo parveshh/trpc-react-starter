@@ -1,7 +1,6 @@
 import { UserSchema } from "@app/schemas";
 import { publicProcedure } from "../procedures/publicProcedure";
 import { createSHAHash } from "../utils/utils";
-import { router } from "../trpc";
 
 export const signUpRouter = publicProcedure
   .input(UserSchema)
@@ -11,7 +10,7 @@ export const signUpRouter = publicProcedure
     input.password = passwordHash;
     const user = await userRepository.createUser(input);
     return {
-      [user.id]: user.id,
-      [user.email]: user.email,
+      id: user.id,
+      email: user.email,
     };
   });
