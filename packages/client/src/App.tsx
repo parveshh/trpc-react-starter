@@ -46,8 +46,12 @@ function App() {
           </h1>
         </Header>
         <Main>
-          <div className='flex flex-wrap gap-10 mt-20 place-content-center'>
-            <Card icon={<TRPCIcon />} title='tRPC'>
+          <div className='flex flex-wrap gap-10 mt-20 place-content-center '>
+            <Card
+              icon={<TRPCIcon />}
+              borderClass='border-green-600'
+              title='tRPC'
+            >
               <p className='text-sm mt-3'>
                 <a className='text-blue-600' href='https://trpc.io'>
                   tRPC
@@ -56,7 +60,11 @@ function App() {
                 APIs with safety and ease of use in mind.
               </p>
             </Card>
-            <Card icon={<ReactIcon />} title='React'>
+            <Card
+              icon={<ReactIcon />}
+              title='React'
+              borderClass='border-purple-500'
+            >
               <p className='text-sm mt-3'>
                 <a className='text-blue-600' href='https://react.dev'>
                   React

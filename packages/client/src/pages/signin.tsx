@@ -9,9 +9,8 @@ export function SignInPage() {
         <SignIn />
         <SideInfo
           summary={
-            <p className='text-gray-500 text-center text-sm'>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Voluptates, quibusdam.
+            <p className='text-gray-100 text-center text-sm'>
+              Are you new here? Create an account and discover Starterapp.
             </p>
           }
           href='/signup'
