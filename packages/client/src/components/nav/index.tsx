@@ -1,4 +1,5 @@
 import { SiEbox } from 'react-icons/si';
+import { Link } from 'react-router-dom';
 export const Nav = () => {
   return (
     <nav className='flex w-full shadow-md shadow-slate-600/2 px-10 mt-0 md:h-16 h-60'>
@@ -8,23 +9,23 @@ export const Nav = () => {
             <SiEbox />
             Starterapp
           </h1>
-          <a className='text-gray-600 text-sm' href='/'>
+          <Link to={'/'} className='text-gray-600 text-sm'>
             Home
-          </a>
-          <a className='text-gray-600 text-sm' href='https://trpc.io'>
+          </Link>
+          <Link className='text-gray-600 text-sm' to='https://trpc.io'>
             About
-          </a>
-          <a className='text-gray-600 text-sm' href='https://trpc.io'>
+          </Link>
+          <Link className='text-gray-600 text-sm' to='https://trpc.io'>
             Contact
-          </a>
+          </Link>
         </div>
         <nav className='md:flex-row flex flex-col gap-5 items-center'>
-          <a className='text-gray-600 text-sm' href='/sign-in'>
+          <Link className='text-gray-600 text-sm' to='/sign-in'>
             Login
-          </a>
-          <a className='text-gray-600 text-sm' href='/signup'>
+          </Link>
+          <Link className='text-gray-600 text-sm' to='/signup'>
             Signup
-          </a>
+          </Link>
         </nav>
       </div>
     </nav>
