@@ -1,4 +1,3 @@
-import { Static, Type } from "@sinclair/typebox";
 import * as Yup from "yup";
 
 export const SigninSchema = Yup.object().shape({

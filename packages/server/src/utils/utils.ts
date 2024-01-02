@@ -3,12 +3,23 @@ import { TokenPayload } from "src/types";
 import fs from "fs/promises";
 import path from "path";
 import crypto from "crypto";
-let authTokenKeys: { publicKey: Buffer; privateKey: Buffer } | null = null;
-let refreshTokenKeys: { publicKey: Buffer; privateKey: Buffer } | null = null;
+let authTokenKeys: { publicKey: jwt.KeyLike; privateKey: jwt.KeyLike } | null =
+  null;
+let refreshTokenKeys: {
+  publicKey: jwt.KeyLike;
+  privateKey: jwt.KeyLike;
+} | null = null;
+
+import { Constructor } from "../types";
+
+export const classInstanceOf = <T>(
+  obj: unknown,
+  type: Constructor<T>
+): obj is T => obj instanceof type;
 
 const generateAuthToken = async (
   payload: TokenPayload,
-  alg: "RSA256" | "HS256" = "RSA256"
+  alg: "RS256" | "HS256" = "RS256"
 ) => {
   const {
     authTokenKeys: { privateKey },
@@ -36,7 +47,7 @@ const verifyAuthToken = async (token: string) => {
 
 const generateRefreshToken = async (
   payload: TokenPayload,
-  alg: "RSA256" | "HS256" = "RSA256"
+  alg: "RS256" | "HS256" = "RS256"
 ) => {
   const {
     refreshTokenKeys: { privateKey },
@@ -69,25 +80,30 @@ const getKeys = async () => {
   }
 
   const publicAuthKey = await fs.readFile(
-    path.join(__dirname, "../../assets/publicAuth.key")
+    path.join(__dirname, "../../assets/publicAuth.key"),
+    { encoding: "utf-8" }
   );
   const privateAuthKey = await fs.readFile(
-    path.join(__dirname, "../../assets/privateAuth.key")
+    path.join(__dirname, "../../assets/privateAuth.key"),
+    { encoding: "utf-8" }
   );
 
   const publicRefreshKey = await fs.readFile(
-    path.join(__dirname, "../../assets/publicRefresh.key")
+    path.join(__dirname, "../../assets/publicRefresh.key"),
+    { encoding: "utf-8" }
   );
   const privateRefreshKey = await fs.readFile(
-    path.join(__dirname, "../../assets/privateRefresh.key")
+    path.join(__dirname, "../../assets/privateRefresh.key"),
+    { encoding: "utf-8" }
   );
+
   authTokenKeys = {
-    publicKey: publicAuthKey,
-    privateKey: privateAuthKey,
+    publicKey: await jwt.importSPKI(publicAuthKey, "RS256"),
+    privateKey: await jwt.importPKCS8(privateAuthKey, "RS256"),
   };
   refreshTokenKeys = {
-    publicKey: publicRefreshKey,
-    privateKey: privateRefreshKey,
+    publicKey: await jwt.importSPKI(publicRefreshKey, "RS256"),
+    privateKey: await jwt.importPKCS8(privateRefreshKey, "RS256"),
   };
   return { authTokenKeys, refreshTokenKeys };
 };
