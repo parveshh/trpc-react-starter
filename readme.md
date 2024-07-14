@@ -1,5 +1,3 @@
-# This is a work in progress
-
 # tRPC + React.js + postgres + AWS CDK Starter [WIP]
 
 This is a starter project that uses tRPC, React.js, and AWS CDK. It's written in TypeScript and uses Yarn as the package manager.
